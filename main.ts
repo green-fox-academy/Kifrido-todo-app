@@ -7,6 +7,7 @@ const args: string[] = process.argv;
 let emptyContent: string = fs.readFileSync('empty.txt', 'utf-8')
 let content: string = fs.readFileSync('List-of-tasks.txt', 'utf-8')
 let linesContent : string [] = content.split('\n');
+let addTask: string [] = fs.appendFileSync('List-of-tasks.txt', '\n' + args[3], 'utf-8')
 
 
 export let mainProcess = () => {
@@ -22,7 +23,7 @@ export let mainProcess = () => {
         }
     } 
     } if (args[2] == '-a'){
-        
+        return addTask;
     }
 }
  
