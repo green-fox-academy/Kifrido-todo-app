@@ -1,15 +1,23 @@
 'use strict';
 
+import { Todo } from './input'
 const fs = require('fs');
 
 const args: string[] = process.argv;
+let emptyContent: string = fs.readFileSync('empty.txt', 'utf-8')
+let content: string = fs.readFileSync('List-of-tasks.txt', 'utf-8')
+let linesContent : string [] = content.split('\n');
 
-let mainProcess = () => {
+
+export let mainProcess = () => {
 
     if (args.length == 2){
-      console.log('Command Line Todo application'+'\n' + '=============================' + '\n' + '\n' + 'Command line arguments:' + '\n' + '-l   Lists all the tasks' + '\n'
-      + '-a   Adds a new task' +'\n' + '-r   Removes a task' + '\n' + '-c   Completes a task');
+      console.log(emptyContent);
+    } else if (args[2] == '-l'){
+        for (let i: number = 0; i < linesContent.length; i++){
+            console.log((i+1) + '. ' + linesContent[i]);
+        }
     }
 }
-    
-  mainProcess();
+ 
+mainProcess();
